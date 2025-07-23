@@ -18,6 +18,7 @@ application {
 }
 
 dependencies {
+    implementation("com.wire", "wire-apps-jvm-sdk", "0.0.13")
     testImplementation(kotlin("test"))
 }
 

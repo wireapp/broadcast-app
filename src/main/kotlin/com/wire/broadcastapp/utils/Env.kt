@@ -2,6 +2,11 @@ package com.wire.broadcastapp.utils
 
 import java.util.UUID
 
+private fun getEnvOrDefault(
+    name: String,
+    default: String
+): String = System.getenv(name) ?: default
+
 object Env {
     /**
      * Application ID received when Onboarding the App.
@@ -29,9 +34,13 @@ object Env {
      */
     val CRYPTOGRAPHY_STORAGE_PASSWORD: String =
         getEnvOrDefault("CRYPTOGRAPHY_STORAGE_PASSWORD", "")
+}
 
-    private fun getEnvOrDefault(
-        name: String,
-        default: String
-    ): String = System.getenv(name) ?: default
+object PostgresEnv {
+    val DB_USER: String =
+        getEnvOrDefault("POSTGRES_USER", "jdbc:postgresql://localhost:5432/broadcast-app")
+    val DB_PASSWORD: String =
+        getEnvOrDefault("POSTGRES_PASSWORD", "broadcast-app")
+    val DB_URL: String =
+        getEnvOrDefault("POSTGRES_URL", "super-secret-pwd")
 }

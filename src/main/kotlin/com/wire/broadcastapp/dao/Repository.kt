@@ -5,12 +5,12 @@ import org.jetbrains.exposed.v1.core.and
 import org.jetbrains.exposed.v1.jdbc.selectAll
 import org.jetbrains.exposed.v1.jdbc.transactions.transaction
 
-object Repository {
-    fun QualifiedId.isAuthorized(): Boolean =
+class Repository {
+    fun isSenderAuthorized(userId: QualifiedId): Boolean =
         transaction {
             Senders.selectAll().where {
-                (Senders.userId eq this@isAuthorized.id) and
-                    (Senders.userDomain eq domain)
+                (Senders.userId eq userId.id) and
+                    (Senders.userDomain eq userId.domain)
             }.any()
         }
 }

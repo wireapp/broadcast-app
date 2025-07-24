@@ -6,15 +6,15 @@ import com.wire.integrations.jvm.model.QualifiedId
 import com.wire.integrations.jvm.model.WireMessage
 
 object EventsHandler : WireEventsHandlerSuspending() {
-    private const val COMMAND_PREFIX = "/broadcast "
-    val NOT_AUTHORIZED = """
+    private const val COMMAND_PREFIX = "/broadcast"
+    private val NOT_AUTHORIZED = """
         ⛔ You’re not authorized to send broadcasts.
         Only approved broadcasters can use the `$COMMAND_PREFIX` command.
     """.trim()
 
     override suspend fun onMessage(wireMessage: WireMessage.Text) {
         val content = extractCommandContent(wireMessage.text) ?: return
-        if (isAuthorized(wireMessage.sender.id)) {
+        if (wireMessage.sender.isAuthorized()) {
             broadcastMessage(
                 senderId = wireMessage.sender,
                 baseConversationId = wireMessage.conversationId,
@@ -31,7 +31,7 @@ object EventsHandler : WireEventsHandlerSuspending() {
 
     private fun extractCommandContent(text: String): String? {
         return if (text.startsWith(COMMAND_PREFIX)) {
-            text.removePrefix(COMMAND_PREFIX)
+            text.removePrefix(COMMAND_PREFIX).trim()
         } else {
             null
         }

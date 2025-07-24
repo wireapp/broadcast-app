@@ -25,6 +25,7 @@ dependencies {
     implementation("org.jetbrains.exposed", "exposed-jdbc", exposedVersion)
     implementation("org.postgresql", "postgresql", "42.7.3")
 
+    testImplementation("io.mockk", "mockk", "1.14.5")
     testImplementation(kotlin("test"))
 }
 

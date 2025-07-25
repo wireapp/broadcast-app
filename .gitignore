@@ -6,7 +6,6 @@ build/
 
 ### Wire SDK ###
 .env
-postgres.env
 apps.db
 cryptography/
 

@@ -38,9 +38,9 @@ object Env {
 
 object PostgresEnv {
     val DB_USER: String =
-        getEnvOrDefault("POSTGRES_USER", "jdbc:postgresql://localhost:5432/broadcast-app")
+        getEnvOrDefault("POSTGRES_USER", "broadcast-app")
     val DB_PASSWORD: String =
-        getEnvOrDefault("POSTGRES_PASSWORD", "broadcast-app")
+        getEnvOrDefault("POSTGRES_PASSWORD", "super-secret-pwd")
     val DB_URL: String =
-        getEnvOrDefault("POSTGRES_URL", "super-secret-pwd")
+        getEnvOrDefault("POSTGRES_URL", "jdbc:postgresql://localhost:5432/broadcast-app")
 }

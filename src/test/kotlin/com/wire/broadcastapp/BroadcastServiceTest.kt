@@ -21,7 +21,9 @@ class BroadcastServiceTest {
         coEvery { sendMessageSuspending(any()) } returns UUID.randomUUID()
     }
     val repositoryMock = mockk<Repository>()
-    val broadcast = BroadcastService(managerMock, repositoryMock)
+    val broadcast = BroadcastService(repositoryMock).apply {
+        initManager(managerMock)
+    }
 
     fun stubConversationId() = QualifiedId(UUID.randomUUID(), "test.domain")
 

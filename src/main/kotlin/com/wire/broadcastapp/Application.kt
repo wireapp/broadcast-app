@@ -9,21 +9,26 @@ import com.wire.integrations.jvm.model.WireMessage
 
 fun main() {
     DatabaseFactory.init()
-    val repository = Repository()
+    val eventsHandler = EventsHandler()
 
     val wireAppSdk = WireAppSdk(
         applicationId = Env.APPLICATION_ID,
         apiToken = Env.API_TOKEN,
         apiHost = Env.API_HOST,
         cryptographyStoragePassword = Env.CRYPTOGRAPHY_STORAGE_PASSWORD,
-        wireEventsHandler = object : WireEventsHandlerSuspending() {
-            private val broadcast = BroadcastService(manager, repository)
-
-            override suspend fun onMessage(wireMessage: WireMessage.Text) {
-                broadcast.handleMessage(wireMessage)
-            }
-        }
+        wireEventsHandler = eventsHandler
     )
 
+    eventsHandler.broadcast.initManager(wireAppSdk.getApplicationManager())
     wireAppSdk.startListening()
+}
+
+class EventsHandler : WireEventsHandlerSuspending() {
+    val repository = Repository()
+
+    val broadcast = BroadcastService(repository)
+
+    override suspend fun onMessage(wireMessage: WireMessage.Text) {
+        broadcast.handleMessage(wireMessage)
+    }
 }

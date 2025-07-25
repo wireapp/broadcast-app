@@ -5,10 +5,9 @@ import com.wire.integrations.jvm.model.QualifiedId
 import com.wire.integrations.jvm.model.WireMessage
 import com.wire.integrations.jvm.service.WireApplicationManager
 
-class BroadcastService(
-    private val manager: WireApplicationManager,
-    private val repository: Repository
-) {
+class BroadcastService(private val repository: Repository) {
+    private lateinit var manager: WireApplicationManager
+
     companion object {
         private const val COMMAND_PREFIX = "/broadcast"
         private val NOT_AUTHORIZED = """
@@ -53,5 +52,9 @@ class BroadcastService(
             text = text
         )
         manager.sendMessageSuspending(message)
+    }
+
+    fun initManager(manager: WireApplicationManager) {
+        this.manager = manager
     }
 }

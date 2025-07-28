@@ -1,7 +1,9 @@
+import com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar
 import org.jlleitschuh.gradle.ktlint.reporter.ReporterType
 
 plugins {
     kotlin("jvm") version "2.2.0"
+    id("com.gradleup.shadow") version "9.0.0-beta13"
     id("org.jlleitschuh.gradle.ktlint") version "13.0.0"
     id("io.gitlab.arturbosch.detekt") version "1.23.8"
     application
@@ -18,6 +20,14 @@ application {
 }
 
 dependencies {
+    implementation("com.wire", "wire-apps-jvm-sdk", "0.0.13")
+
+    val exposedVersion = "1.0.0-beta-4"
+    implementation("org.jetbrains.exposed", "exposed-core", exposedVersion)
+    implementation("org.jetbrains.exposed", "exposed-jdbc", exposedVersion)
+    implementation("org.postgresql", "postgresql", "42.7.3")
+
+    testImplementation("io.mockk", "mockk", "1.14.5")
     testImplementation(kotlin("test"))
 }
 
@@ -46,4 +56,17 @@ tasks.test {
 }
 kotlin {
     jvmToolchain(17)
+}
+
+tasks {
+    named<ShadowJar>("shadowJar") {
+        mergeServiceFiles()
+        archiveBaseName.set("broadcast-app")
+        manifest {
+            attributes["Main-Class"] = application.mainClass.get()
+        }
+    }
+    build {
+        dependsOn(shadowJar)
+    }
 }

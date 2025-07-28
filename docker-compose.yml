@@ -1,0 +1,26 @@
+services:
+  app:
+    build: .
+    platform: linux/amd64
+    container_name: broadcast-app
+    env_file:
+      - .env
+      - postgres.env
+    depends_on:
+      - db
+    volumes:
+      - broadcast-app:/app
+
+  db:
+    image: postgres:13
+    container_name: broadcast-db
+    env_file:
+      - postgres.env
+    ports:
+      - 5432:5432
+    volumes:
+      - broadcast-db:/var/lib/postgresql/data/
+
+volumes:
+  broadcast-db:
+  broadcast-app:

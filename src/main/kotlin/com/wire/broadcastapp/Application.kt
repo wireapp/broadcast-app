@@ -2,7 +2,7 @@ package com.wire.broadcastapp
 
 import com.wire.broadcastapp.dao.DatabaseFactory
 import com.wire.broadcastapp.utils.Env
-import com.wire.integrations.jvm.WireAppSdk
+import com.wire.sdk.WireAppSdk
 
 fun main() {
     DatabaseFactory.init()

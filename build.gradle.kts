@@ -20,7 +20,7 @@ application {
 }
 
 dependencies {
-    implementation("com.wire", "wire-apps-jvm-sdk", "0.0.13")
+    implementation("com.wire", "wire-apps-jvm-sdk", "0.0.18")
 
     val exposedVersion = "1.0.0-beta-4"
     implementation("org.jetbrains.exposed", "exposed-core", exposedVersion)

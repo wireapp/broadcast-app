@@ -1,9 +1,12 @@
 # Broadcast-App PoC
 Message multiple conversations simultaneously.
+This sample Wire App is intended as a Proof of Concept to manage basic DB whitelisting and sending the message in multiple conversations.
+It's not intended to be used in production as is, but rather as a starting point for building more complex Wire Apps.
 
 ### Prerequisites
 Create a .env file in the project root as specified in [SDK documentation](https://dev.wire.com/quickstart-advanced#initializing-the-sdk)  
-The database environmental variables are specified in postgres.env
+You can use the .env.sample file as a starting point and fill in data for the Wire user that will own the App.
+The database environmental variables are already specified in postgres.env
 
 ### Usage
 1. Start the App

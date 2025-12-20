@@ -62,9 +62,7 @@ tasks {
     named<ShadowJar>("shadowJar") {
         mergeServiceFiles()
         archiveBaseName.set("broadcast-app")
-        manifest {
-            attributes["Main-Class"] = application.mainClass.get()
-        }
+        duplicatesStrategy = DuplicatesStrategy.INCLUDE
     }
     build {
         dependsOn(shadowJar)

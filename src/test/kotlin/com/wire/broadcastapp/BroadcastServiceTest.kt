@@ -1,11 +1,11 @@
 package com.wire.broadcastapp
 
 import com.wire.broadcastapp.dao.Repository
-import com.wire.integrations.jvm.model.ConversationData
-import com.wire.integrations.jvm.model.QualifiedId
-import com.wire.integrations.jvm.model.WireMessage
-import com.wire.integrations.jvm.model.http.user.UserResponse
-import com.wire.integrations.jvm.service.WireApplicationManager
+import com.wire.sdk.model.ConversationData
+import com.wire.sdk.model.QualifiedId
+import com.wire.sdk.model.WireMessage
+import com.wire.sdk.model.http.user.UserResponse
+import com.wire.sdk.service.WireApplicationManager
 import io.mockk.Called
 import io.mockk.coEvery
 import io.mockk.coVerify

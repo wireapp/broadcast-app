@@ -1,9 +1,9 @@
 package com.wire.broadcastapp
 
 import com.wire.broadcastapp.dao.Repository
-import com.wire.integrations.jvm.model.QualifiedId
-import com.wire.integrations.jvm.model.WireMessage
-import com.wire.integrations.jvm.service.WireApplicationManager
+import com.wire.sdk.model.QualifiedId
+import com.wire.sdk.model.WireMessage
+import com.wire.sdk.service.WireApplicationManager
 
 class BroadcastService(private val repository: Repository) {
     private lateinit var manager: WireApplicationManager

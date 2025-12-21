@@ -9,7 +9,7 @@ services:
     depends_on:
       - db
     volumes:
-      - broadcast-app:/app
+      - broadcast-app:/app/storage
 
   db:
     image: postgres:13

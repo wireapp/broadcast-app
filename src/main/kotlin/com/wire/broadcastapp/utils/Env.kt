@@ -24,7 +24,7 @@ object Env {
      * API Host to be used as a backend contact point for the SDK.
      */
     val API_HOST: String =
-        getEnvOrDefault("API_HOST", "https://nginz-https.chala.wire.link")
+        getEnvOrDefault("API_HOST", "https://staging-nginz-https.zinfra.io")
 
     /**
      * Cryptography storage password
@@ -33,7 +33,7 @@ object Env {
      * It must be exactly 32 characters long
      */
     val CRYPTOGRAPHY_STORAGE_PASSWORD: String =
-        getEnvOrDefault("CRYPTOGRAPHY_STORAGE_PASSWORD", "")
+        getEnvOrDefault("CRYPTOGRAPHY_STORAGE_PASSWORD", "myDummyPasswordOfRandom32BytesCH")
 }
 
 object PostgresEnv {

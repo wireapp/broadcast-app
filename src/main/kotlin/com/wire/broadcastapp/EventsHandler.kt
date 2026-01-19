@@ -30,7 +30,7 @@ class EventsHandler : WireEventsHandlerSuspending() {
 
     private companion object {
         const val WELCOME_TEXT =
-            "\uD83D\uDC4B Hi, I'm the Broadcast App. Thanks for adding me to the conversation.\n" +
+            "👋 Hi, I'm the Broadcast App. Thanks for adding me to the conversation.\n" +
                 "You can use me to message multiple conversations simultaneously.\n" +
                 "I'm here to help make everyday work a little easier.\n" +
                 "Use the `$COMMAND_PREFIX <your message here>` command to get started."

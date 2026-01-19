@@ -9,7 +9,7 @@ class BroadcastService(private val repository: Repository) {
     private lateinit var manager: WireApplicationManager
 
     companion object {
-        private const val COMMAND_PREFIX = "/broadcast"
+        const val COMMAND_PREFIX = "/broadcast"
         private val NOT_AUTHORIZED = """
             ⛔ You’re not authorized to send broadcasts.
             Only approved broadcasters can use the `$COMMAND_PREFIX` command.

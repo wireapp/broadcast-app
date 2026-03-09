@@ -10,13 +10,16 @@ apps.db
 cryptography/
 
 ### IntelliJ IDEA ###
-.idea
+.idea/*
 *.iws
 *.iml
 *.ipr
 out/
 !**/src/main/**/out/
 !**/src/test/**/out/
+
+# Allow automatic IntelliJ's automatic copyright
+!.idea/copyright/
 
 ### Kotlin ###
 .kotlin
